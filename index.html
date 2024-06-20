@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYA Soft Sales</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: url('header-bg.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5rem;
+        }
+        header p {
+            font-size: 1.25rem;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #159609ad;
+            padding: 1rem 0;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            background-color: #575757;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .container {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            display: none;
+            margin-bottom: 2rem;
+        }
+        .section.active {
+            display: block;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #4CAF50;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        ul {
+            padding-left: 1.5rem;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        footer p {
+            margin: 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Bienvenido a AYA Soft Sales</h1>
+    <p>Soluciones de Software Innovadoras para tu Negocio</p>
+</header>
+
+<nav>
+    <a href="#" onclick="showSection('about')">Sobre Nosotros</a>
+    <a href="#" onclick="showSection('services')">Servicios</a>
+    <a href="#" onclick="showSection('contact')">Contacto</a>
+</nav>
+
+<div class="container">
+    <section id="about" class="section active">
+        <h2>Sobre Nosotros</h2>
+        <p>AYA Soft Sales se dedica a ofrecer soluciones de software personalizadas para empresas de todos los tamaños. Nuestro equipo de expertos está comprometido en brindar productos y servicios de alta calidad que mejoran la eficiencia y productividad de nuestros clientes.</p>
+        <p>Nos destacamos por:</p>
+        <ul>
+            <li>Innovación constante en desarrollo de software.</li>
+            <li>Atención personalizada a cada cliente.</li>
+            <li>Resultados comprobados en la optimización de procesos.</li>
+        </ul>
+        <a href="#" class="btn" onclick="openModal('aboutModal')">Conoce más</a>
+    </section>
+
+    <section id="services" class="section">
+        <h2>Servicios</h2>
+        <ul>
+            <li>Desarrollo de Software Personalizado: Creamos soluciones a medida que se adaptan a las necesidades específicas de tu negocio.</li>
+            <li>Consultoría Tecnológica: Ofrecemos asesoramiento experto para ayudarte a elegir y utilizar las mejores tecnologías.</li>
+            <li>Soporte Técnico: Brindamos soporte continuo para asegurar que tus sistemas operen sin problemas.</li>
+        </ul>
+        <p>Para obtener más información sobre nuestros servicios, contáctenos y estaremos encantados de ayudarle.</p>
+        <a href="#" class="btn" onclick="openModal('servicesModal')">Ver más servicios</a>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contacto</h2>
+        <p>Teléfono: 318 234 7566</p>
+        <p>Correo Electrónico: andercupitra08@gmail.com</p>
+        <p>Dirección: Curillo, Caqueta, Colombia</p>
+        <a href="#" class="btn" onclick="openModal('contactModal')">Contáctanos</a>
+    </section>
+</div>
+<!-- Modales -->
+<div id="aboutModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('aboutModal')">&times;</span>
+        <h2>Más Sobre Nosotros</h2>
+        <p>En AYA Soft Sales, nuestra misión es transformar los negocios a través de soluciones de software innovadoras. Desde nuestra fundación, hemos trabajado con diversas industrias, desarrollando software que mejora la eficiencia y facilita el crecimiento. Nuestro equipo está formado por profesionales apasionados por la tecnología y el éxito de nuestros clientes.</p>
+    </div>
+</div>
+
+<div id="servicesModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('servicesModal')">&times;</span>
+        <h2>Más Sobre Nuestros Servicios</h2>
+        <p>AYA Soft Sales ofrece una amplia gama de servicios para satisfacer todas tus necesidades tecnológicas. Desde el desarrollo de aplicaciones móviles hasta la implementación de sistemas ERP, nuestra experiencia y dedicación garantizan que recibirás soluciones eficaces y personalizadas.</p>
+        <p>Algunos de nuestros servicios adicionales incluyen:</p>
+        <ul>
+            <li>Integración de sistemas.</li>
+            <li>Automatización de procesos.</li>
+            <li>Capacitación y soporte técnico.</li>
+        </ul>
+    </div>
+</div>
+
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('contactModal')">&times;</span>
+        <h2>Contáctanos</h2>
+        <p>Nos encantaría saber de ti. Llena el siguiente formulario y nos pondremos en contacto contigo lo antes posible.</p>
+        <form>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Mensaje:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+            <button type="submit" class="btn">Enviar</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 AYA Soft Sales. "¡Transformamos ideas en realidad digital!".</p>
+</footer>
+
+</body>
+</html>
